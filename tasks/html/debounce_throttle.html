@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="br-text" style="width: 200px;">
+<div style="width: 200px; height: 200px; background-color: #acdcdc; margin-top: 20px;">
+    <input type="text" readonly id="br-coordinates">
+    <input type="text" readonly id="br-coordinates2">
+</div>
+
+<script src="../../debounce_throttling.js"></script>
+<script>
+  const $input = document.querySelector('#br-text')
+  const $div = document.querySelector('div')
+  const $coordinates = document.querySelector('#br-coordinates')
+  const $coordinates2 = document.querySelector('#br-coordinates2')
+  const debounceHandler = e => {
+    console.log('запрос на сервер', e.target.value)
+  }
+  $input.addEventListener('input', brDebounce(debounceHandler, 1000))
+
+  const debounceCoordinatesHandler = e => {
+      $coordinates.value = `debounce ${e.clientX} x ${e.clientY}`
+  }
+  const throttleCoordinatesHandler = e => {
+      $coordinates2.value = `throttle ${e.clientX} x ${e.clientY}`
+  }
+  $div.addEventListener('mousemove', brDebounce(debounceCoordinatesHandler, 1000))
+  $div.addEventListener('mousemove', brThrottle(throttleCoordinatesHandler, 1000))
+
+
+</script>
+</body>
+</html>

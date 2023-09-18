@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div contentEditable id="elem">Отредактируй <b>меня</b>, пожалуйста</div>
+
+  <script>
+    let observer = new MutationObserver(mutation => {
+      console.log(mutation)
+    })
+    let element = document.querySelector('#elem')
+    console.log(element)
+    observer.observe(element, {
+      childList: true, // наблюдать за непосредственными детьми
+      subtree: true, // и более глубокими потомками
+      characterDataOldValue: true // передавать старое значение в колбэк
+    })
+  </script>
+</body>
+</html>

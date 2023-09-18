@@ -1,0 +1,24 @@
+@import '~normalize.css';
+@import "montserrat.css";
+@import "preproc.scss";
+
+* {
+    text-align: center;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    color: red;
+    font-size: 2em;
+}
+.logo {
+    background-image: url("../logo.png");
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+pre {
+    color: black;
+}

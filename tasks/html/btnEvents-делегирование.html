@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="menu">
+        <button data-id="save">Сохранить</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <button data-id="del">Удалить</button>
+        <button data-id="change">Изменить</button>
+    </div>
+
+    <script>
+        class Menu {
+            constructor($el) {
+              $el.addEventListener('click', this.message.bind(this))
+            }
+            save() {
+                console.log('сохраняю')
+            }
+            del() {
+                console.log('удаляю')
+            }
+            change() {
+                console.log('меняю')
+            }
+            message(el) {
+                const method = el.target.dataset.id
+                if (this[method]) this[method]()
+
+            }
+        }
+
+        const $menu = document.querySelector('.menu')
+        new Menu($menu)
+
+
+    </script>
+</body>
+</html>
